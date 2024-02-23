@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {Monitor} from './components/Monitor/Monitor';
+import {Button} from './components/Button/Button';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [count, setCount] = useState<number>(0);
+
+    const countIncrement = () => {
+        setCount(count + 1);
+    };
+
+    const countReset = () => {
+        setCount(0);
+    };
+
+    const disableMin = count === 0;
+    const disableMax = count === 5;
+
+    return (
+        <div className="App">
+            <div className={'Counter'}>
+                <div className={'MonitorWrap'}>
+                    <Monitor count={count} disable={disableMax}/>
+                </div>
+                <div className={'ButtonsWrap'}>
+                    <div className={'Buttons'}>
+                        <Button name={'Increment'} disable={disableMax} callBack={countIncrement}/>
+                        <Button name={'Reset'} disable={disableMin} callBack={countReset}/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default App;
