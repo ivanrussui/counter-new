@@ -1,31 +1,31 @@
 import {Monitor} from './components/Monitor/Monitor';
 import {Button} from './components/Button/Button';
-import React, {FC, useState} from 'react';
-import styles from './Counter.module.css';
+import React, {FC} from 'react';
+import styles from './CounterAdvanced.module.css';
 
-export const Counter: FC = () => {
-    const [count, setCount] = useState<number>(0);
+type CounterType = {
+    countStart: number
+    disableIncrement: boolean
+    disableReset: boolean
+    incorrectValue: string
+    text: null | string
+    countIncrement: () => void
+    countReset: () => void
+}
 
-    const countIncrement = () => {
-        setCount(count + 1);
-    };
-
-    const countReset = () => {
-        setCount(0);
-    };
-
-    const disableMin = count === 0;
-    const disableMax = count === 5;
-
+export const Counter: FC<CounterType> = ({
+                                             countStart, disableIncrement, disableReset,
+                                             countIncrement, countReset, text, incorrectValue
+                                         }) => {
     return (
         <div className={styles.Counter}>
             <div className={styles.MonitorWrap}>
-                <Monitor count={count} disable={disableMax}/>
+                <Monitor countStart={countStart} disable={disableIncrement} text={text} incorrectValue={incorrectValue}/>
             </div>
             <div className={styles.ButtonsWrap}>
                 <div className={styles.Buttons}>
-                    <Button name={'Increment'} disable={disableMax} callBack={countIncrement}/>
-                    <Button name={'Reset'} disable={disableMin} callBack={countReset}/>
+                    <Button name={'Increment'} disable={disableIncrement} callBack={countIncrement}/>
+                    <Button name={'Reset'} disable={disableReset} callBack={countReset}/>
                 </div>
             </div>
         </div>

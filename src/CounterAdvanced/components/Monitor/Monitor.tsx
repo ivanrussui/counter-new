@@ -1,14 +1,20 @@
 import React, {FC} from 'react';
-import styles from '../../Counter.module.css';
+import styles from '../../CounterAdvanced.module.css';
 
-type PropsType = {
-    count: number
+type MonitorType = {
+    countStart: number
     disable: boolean
+    incorrectValue: string
+    text: null | string
 }
-export const Monitor: FC<PropsType> = ({count, disable}) => {
-    const finalClass = `${styles.Monitor}${disable ? ` ${styles.Color}` : ''}`;
-    // const finalClass = `${styles.Monitor}${disable ? ` ${styles.Color}` : ''}`;
-    // const finalClass = `Monitor${disable ? ' Color' : ''}`;
+export const Monitor: FC<MonitorType> = ({countStart, disable, text, incorrectValue}) => {
+    const countClass = `${styles.Monitor}${disable ? ` ${styles.MonitorError}` : ''}`;
+    const textClass = text === incorrectValue ? styles.TextError : styles.Text;
 
-    return <div className={finalClass}>{count}</div>;
+    return <>
+        {text
+            ? <div className={textClass}>{text}</div>
+            : <div className={countClass}>{countStart}</div>
+        }
+    </>;
 };
