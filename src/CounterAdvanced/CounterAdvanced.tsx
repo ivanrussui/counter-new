@@ -6,11 +6,11 @@ import {Settings} from './Settings';
 export const CounterAdvanced: FC = () => {
     const [countStart, setCountStart] = useState<number>(0);
     const [countMax, setCountMax] = useState<number>(5);
-    const [disableSettings, setDisableSettings] = useState<boolean>(true);
+    const [disableSettings, setDisableSettings] = useState<boolean>(true); // убрать
 
     const [valueStart, setValueStart] = useState<number>(countStart);
-    const [valueMax, setValueMax] = useState<number>(countMax);
-    const [text, setText] = useState<string | null>(null);
+    const [valueMax, setValueMax] = useState<number>(countMax); //disable/error = valueState >=countMax
+    const [text, setText] = useState<string | null>(null); // убрать
 
     useEffect(() => {
         const valueStartFromStorage = localStorage.getItem('countStart');
@@ -27,10 +27,11 @@ export const CounterAdvanced: FC = () => {
     useEffect(() => {
         setToLocalStorage();
     }, [countStart]); // тут макс не обязательно тк при клике на инкремент его не устанавливаю
+    // }, [countStart, countMax]); // после саппорта добавили макс не понял нужен он или нет, без него ведь все ок
 
     const countIncrement = () => {
         setCountStart(countStart + 1);
-        setToLocalStorage();
+   //     setToLocalStorage(); // тут не надо убрали на саппорте наверное не нужен тк countStart в зависимостях useEffect
     };
 
     const countReset = () => {
@@ -63,7 +64,8 @@ export const CounterAdvanced: FC = () => {
         checkDisableSettings(valueStart, +e.currentTarget.value);
     };
 
-    const enterValues = 'Enter Values and Press \'Settings\'';
+    // тут бы добавить функцию и чтобы в нее приходили 2 текста как я понял
+    const enterValues = 'Enter Values and Press \'Settings\''; //checkTypeOfText(value1, value2...)
     const incorrectValue = 'Incorrect Value!';
     const disableIncrement = countStart === countMax || text !== null;
     const disableReset = countStart === valueStart || text !== null;
@@ -76,7 +78,7 @@ export const CounterAdvanced: FC = () => {
                 disableSettings={disableSettings}
                 setValueStart={setValueStart}
                 setValueMax={setValueMax}
-                setToLocalStorage={setToLocalStorage}
+                // setToLocalStorage={setToLocalStorage} // // убрали на саппорте
                 setCountStart={setCountStart}
                 setCountMax={setCountMax}
                 onChangeStartValue={onChangeStartValue}

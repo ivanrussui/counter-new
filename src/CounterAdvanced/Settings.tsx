@@ -11,7 +11,7 @@ type SettingsType = {
     disableSettings: boolean
     setValueStart: (valueStart: number) => void
     setValueMax: (valueMax: number) => void
-    setToLocalStorage: () => void
+    // setToLocalStorage: () => void // убрали на саппорте
     setCountStart: (value: number) => void
     setCountMax: (value: number) => void
     onChangeStartValue: (e: ChangeEvent<HTMLInputElement>) => void
@@ -27,8 +27,7 @@ type SettingsType = {
 export const Settings: FC<SettingsType> = ({
                                                valueStart, valueMax,
                                                setValueStart, setValueMax,
-
-                                               setToLocalStorage, setCountStart,
+                                               setCountStart,
                                                setCountMax, disableSettings,
                                                onChangeStartValue, onChangeMaxValue, setText
                                            }) => {
@@ -53,7 +52,7 @@ export const Settings: FC<SettingsType> = ({
     }, []);
 
     const setToLocalStorageHandler = () => {
-        setToLocalStorage();
+       // setToLocalStorage(); // убрали на саппорте
         setCountStart(valueStart);
         setCountMax(valueMax);
         setText(null);
