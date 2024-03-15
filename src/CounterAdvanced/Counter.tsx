@@ -20,7 +20,8 @@ export const Counter: FC<CounterType> = ({
     return (
         <div className={styles.Counter}>
             <div className={styles.MonitorWrap}>
-                <Monitor countStart={countStart} disable={disableIncrement} text={text} incorrectValue={incorrectValue}/>
+                <Monitor countStart={countStart} disable={disableIncrement} text={text}
+                         incorrectValue={incorrectValue}/>
             </div>
             <div className={styles.ButtonsWrap}>
                 <div className={styles.Buttons}>
