@@ -11,6 +11,7 @@ type SettingsType = {
     disableSettings: boolean
     setValueStart: (valueStart: number) => void
     setValueMax: (valueMax: number) => void
+    setDisableSettings: (status: boolean) => void
     // setToLocalStorage: () => void // убрали на саппорте
     setCountStart: (value: number) => void
     setCountMax: (value: number) => void
@@ -27,8 +28,8 @@ type SettingsType = {
 export const Settings: FC<SettingsType> = ({
                                                valueStart, valueMax,
                                                setValueStart, setValueMax,
-                                               setCountStart,
-                                               setCountMax, disableSettings,
+                                               setCountStart, setCountMax,
+                                               disableSettings, setDisableSettings,
                                                onChangeStartValue, onChangeMaxValue, setText
                                            }) => {
     // const [valueStart, setValueStart] = useState<number>(countStart);
@@ -56,6 +57,7 @@ export const Settings: FC<SettingsType> = ({
         setCountStart(valueStart);
         setCountMax(valueMax);
         setText(null);
+        setDisableSettings(true); // я изначально забыл сюда прокинуть чтобы блочить кнопку Settings
     };
 
     const errorValueStart = valueStart < 0 || valueStart >= valueMax;
