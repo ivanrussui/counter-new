@@ -76,6 +76,7 @@ export const CounterAdvanced: FC = () => {
                 disableSettings={disableSettings}
                 setValueStart={setValueStart}
                 setValueMax={setValueMax}
+                setDisableSettings={setDisableSettings}
                 setToLocalStorage={setToLocalStorage}
                 setCountStart={setCountStart}
                 setCountMax={setCountMax}

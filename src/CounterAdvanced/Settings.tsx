@@ -11,6 +11,7 @@ type SettingsType = {
     disableSettings: boolean
     setValueStart: (valueStart: number) => void
     setValueMax: (valueMax: number) => void
+    setDisableSettings: (status: boolean) => void
     setToLocalStorage: () => void
     setCountStart: (value: number) => void
     setCountMax: (value: number) => void
@@ -29,7 +30,7 @@ export const Settings: FC<SettingsType> = ({
                                                setValueStart, setValueMax,
 
                                                setToLocalStorage, setCountStart,
-                                               setCountMax, disableSettings,
+                                               setCountMax, disableSettings, setDisableSettings,
                                                onChangeStartValue, onChangeMaxValue, setText
                                            }) => {
     // const [valueStart, setValueStart] = useState<number>(countStart);
@@ -56,6 +57,7 @@ export const Settings: FC<SettingsType> = ({
         setToLocalStorage();
         setCountStart(valueStart);
         setCountMax(valueMax);
+        setDisableSettings(true);
         setText(null);
     };
 
