@@ -6,15 +6,15 @@ import {Settings} from './Settings';
 export const CounterAdvanced: FC = () => {
     const [countStart, setCountStart] = useState<number>(0);
     const [countMax, setCountMax] = useState<number>(5);
-    const [disableSettings, setDisableSettings] = useState<boolean>(true);
-
     const [valueStart, setValueStart] = useState<number>(countStart);
     const [valueMax, setValueMax] = useState<number>(countMax);
+    const [disableSettings, setDisableSettings] = useState<boolean>(true);
     const [text, setText] = useState<string | null>(null);
 
     useEffect(() => {
         const valueStartFromStorage = localStorage.getItem('countStart');
         const valueMaxFromStorage = localStorage.getItem('countMax');
+
         if (valueStartFromStorage) {
             setCountStart(JSON.parse(valueStartFromStorage));
         }
@@ -30,7 +30,6 @@ export const CounterAdvanced: FC = () => {
 
     const countIncrement = () => {
         setCountStart(countStart + 1);
-        setToLocalStorage();
     };
 
     const countReset = () => {
@@ -74,14 +73,13 @@ export const CounterAdvanced: FC = () => {
                 valueStart={valueStart}
                 valueMax={valueMax}
                 disableSettings={disableSettings}
-                setValueStart={setValueStart}
-                setValueMax={setValueMax}
-                setDisableSettings={setDisableSettings}
-                setToLocalStorage={setToLocalStorage}
                 setCountStart={setCountStart}
                 setCountMax={setCountMax}
+                setValueStart={setValueStart}
+                setValueMax={setValueMax}
                 onChangeStartValue={onChangeStartValue}
                 onChangeMaxValue={onChangeMaxValue}
+                setDisableSettings={setDisableSettings}
                 setText={setText}
             />
             <Counter

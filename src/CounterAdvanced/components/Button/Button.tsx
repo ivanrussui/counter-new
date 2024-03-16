@@ -8,10 +8,7 @@ type ButtonType = {
 }
 
 export const Button: FC<ButtonType> = ({name, callBack, disable}) => {
-    const onClickHandler = () => {
-        callBack();
-    };
-    const finalClass = `${styles.Button}${disable ? ` ${styles.Disable}` : ''}`;
+    const finalClass = `${styles.Button} ${disable ? styles.Disable : ''}`;
 
-    return <button disabled={disable} className={finalClass} onClick={onClickHandler}>{name}</button>;
+    return <button disabled={disable} className={finalClass} onClick={callBack}>{name}</button>;
 };

@@ -1,7 +1,6 @@
 import React, {ChangeEvent, FC} from 'react';
 import styles from '../../CounterAdvanced.module.css';
 import {Input} from '../Input/Input';
-// import {SettingsStateType} from '../../Settings';
 
 type SettingType = {
     title: string
@@ -9,9 +8,6 @@ type SettingType = {
     callBack: (e: ChangeEvent<HTMLInputElement>) => void
     errorValue: boolean
 }
-// type SettingType = SettingsStateType & {
-//     callBack: (e: ChangeEvent<HTMLInputElement>) => void
-// }
 
 export const Setting: FC<SettingType> = ({title, value, callBack, errorValue}) => {
     return (

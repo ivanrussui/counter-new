@@ -8,10 +8,7 @@ type InputType = {
 }
 
 export const Input: FC<InputType> = ({value, callBack, errorValue}) => {
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        callBack(e);
-    };
-    const inputClass = `${styles.Input}${errorValue ? ` ${styles.InputError}` : ''}`;
+    const inputClass = `${styles.Input} ${errorValue ? styles.InputError : ''}`;
 
-    return <input value={value} onChange={onChangeHandler} className={inputClass} type="number"/>
+    return <input value={value} onChange={callBack} className={inputClass} type="number"/>;
 };
