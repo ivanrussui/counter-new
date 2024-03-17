@@ -7,13 +7,10 @@ import {Button} from './components/Button/Button';
 export const CounterAdvanced2in1: FC = () => {
     const [valueStart, setValueStart] = useState<number>(0);
     const [valueMax, setValueMax] = useState<number>(5);
-
     const [countStart, setCountStart] = useState<number>(valueStart);
     const [countMax, setCountMax] = useState<number>(valueMax);
-
     const [disableSettings, setDisableSettings] = useState<boolean>(false);
     const [settings, setSettings] = useState<boolean>(false);
-
 
     useEffect(() => {
         const valueStartFromStorage = localStorage.getItem('valueStart');

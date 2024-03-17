@@ -15,12 +15,13 @@ type SettingsType = {
     onChangeStartValue: (e: ChangeEvent<HTMLInputElement>) => void
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     setText: (text: string | null) => void
+    setToLocalStorage: () => void
 }
 
 export const Settings: FC<SettingsType> = ({
                                                valueStart, valueMax, setValueMax, setValueStart,
                                                setCountStart, setCountMax, disableSettings, setDisableSettings,
-                                               onChangeStartValue, onChangeMaxValue, setText
+                                               onChangeStartValue, onChangeMaxValue, setText, setToLocalStorage
                                            }) => {
 
     useEffect(() => {
@@ -40,6 +41,7 @@ export const Settings: FC<SettingsType> = ({
         setCountMax(valueMax);
         setDisableSettings(true);
         setText(null);
+        setToLocalStorage();
     };
 
     const errorValueStart = valueStart < 0 || valueStart >= valueMax;

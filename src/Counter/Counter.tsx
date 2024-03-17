@@ -6,13 +6,9 @@ import styles from './Counter.module.css';
 export const Counter: FC = () => {
     const [count, setCount] = useState<number>(0);
 
-    const countIncrement = () => {
-        setCount(count + 1);
-    };
+    const countIncrement = () => setCount(count + 1);
 
-    const countReset = () => {
-        setCount(0);
-    };
+    const countReset = () => setCount(0);
 
     const disableMin = count === 0;
     const disableMax = count === 5;
