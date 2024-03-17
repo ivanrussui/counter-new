@@ -4,22 +4,24 @@ import {Counter} from './Counter';
 import {Settings} from './Settings';
 
 export const CounterAdvanced: FC = () => {
-    const [countStart, setCountStart] = useState<number>(0);
-    const [countMax, setCountMax] = useState<number>(5);
-    const [valueStart, setValueStart] = useState<number>(countStart);
-    const [valueMax, setValueMax] = useState<number>(countMax);
+    const [valueStart, setValueStart] = useState<number>(0);
+    const [valueMax, setValueMax] = useState<number>(5);
+    const [countStart, setCountStart] = useState<number>(valueStart);
+    const [countMax, setCountMax] = useState<number>(valueMax);
     const [disableSettings, setDisableSettings] = useState<boolean>(true);
     const [text, setText] = useState<string | null>(null);
 
     useEffect(() => {
-        const valueStartFromStorage = localStorage.getItem('countStart');
-        const valueMaxFromStorage = localStorage.getItem('countMax');
+        const valueStartFromStorage = localStorage.getItem('valueStart');
+        const valueMaxFromStorage = localStorage.getItem('valueMax');
 
         if (valueStartFromStorage) {
             setCountStart(JSON.parse(valueStartFromStorage));
+            setValueStart(JSON.parse(valueStartFromStorage));
         }
         if (valueMaxFromStorage) {
             setCountMax(JSON.parse(valueMaxFromStorage));
+            setValueMax(JSON.parse(valueMaxFromStorage));
         }
     }, []);
 
@@ -37,8 +39,8 @@ export const CounterAdvanced: FC = () => {
     };
 
     const setToLocalStorage = () => {
-        localStorage.setItem('countStart', JSON.stringify(countStart));
-        localStorage.setItem('countMax', JSON.stringify(countMax));
+        localStorage.setItem('valueStart', JSON.stringify(valueStart));
+        localStorage.setItem('valueMax', JSON.stringify(valueMax));
     };
 
     // функция чтобы не дублировать проверки внутри onChangeMaxValue и onChangeStartValue
@@ -81,6 +83,7 @@ export const CounterAdvanced: FC = () => {
                 onChangeMaxValue={onChangeMaxValue}
                 setDisableSettings={setDisableSettings}
                 setText={setText}
+                setToLocalStorage={setToLocalStorage}
             />
             <Counter
                 countStart={countStart}

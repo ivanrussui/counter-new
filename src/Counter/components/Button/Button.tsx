@@ -1,19 +1,14 @@
 import React, {FC} from 'react';
 import styles from '../../Counter.module.css';
 
-type PropsType = {
+type ButtonType = {
     name: string
     callBack: () => void
-    disable?: boolean
+    disable: boolean
 }
 
-export const Button: FC<PropsType> = ({name, callBack, disable}) => {
-    const onClickHandler = () => {
-        callBack();
-    };
+export const Button: FC<ButtonType> = ({name, callBack, disable}) => {
+    const buttonClass = `${styles.Button} ${disable ? styles.Disable : ''}`;
 
-    const finalClass = `${styles.Button}${disable ? ` ${styles.Disable}` : ''}`;
-    // const finalClass = `Button${disable ? ' Disable' : ''}`;
-
-    return <button disabled={disable} className={finalClass} onClick={onClickHandler}>{name}</button>;
+    return <button disabled={disable} className={buttonClass} onClick={callBack}>{name}</button>;
 };

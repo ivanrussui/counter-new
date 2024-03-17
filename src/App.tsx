@@ -7,8 +7,8 @@ import {CounterAdvanced2in1} from './CounterAdvanced2in1/CounterAdvanced2in1';
 const App: FC = () => {
     return (
         <div className="App">
-            {/*<Counter/>*/}
-            {/*<CounterAdvanced/>*/}
+            <Counter/>
+            <CounterAdvanced/>
             <CounterAdvanced2in1/>
         </div>
     );
