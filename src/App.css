@@ -1,9 +1,19 @@
 .App {
     display: grid;
     place-items: center;
-    margin-top: 100px;
     gap: 10px;
-    @media (max-width: 767px) {
-        margin-top: 20px;
-    }
+}
+
+.NavLink {
+    text-decoration: none;
+    color: darkslateblue;
+}
+
+.Active {
+    color: mediumslateblue;
+    text-decoration: underline;
+}
+
+.Title {
+    color: mediumslateblue;
 }
