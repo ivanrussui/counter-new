@@ -1,0 +1,130 @@
+.CounterRedux {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: auto;
+        gap: 25px;
+    }
+}
+
+.Counter, .Settings {
+    min-width: 270px;
+    display: grid;
+    grid-template-rows: 100px 70px; /* Одна строка для монитора, другая строка для кнопок */
+    grid-gap: 15px;
+    place-items: center;
+    background: slateblue;
+    border: 3px solid red;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+}
+
+.Settings {
+    @media (max-width: 767px) {
+        order: 1;
+    }
+}
+
+.MonitorWrap {
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.MonitorSettingsWrap {
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 50px 50px;
+    align-items: center;
+}
+
+.Setting {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding: 0 25px;
+
+}
+
+.Title {
+    margin: 0;
+}
+
+.Input {
+    max-width: 100px;
+    text-align: center;
+    outline-color: slateblue;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
+.InputError {
+    background-color: darkslateblue;
+    outline-color: skyblue;
+    color: aliceblue;
+}
+
+.Monitor {
+    color: white;
+    font-size: 30px;
+}
+
+.MonitorError {
+    color: lightblue;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.ButtonsWrap {
+    display: grid;
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+
+.Buttons {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    justify-content: space-evenly;
+}
+
+.ButtonOne {
+    grid-template-columns: min-content;
+}
+
+.Button {
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    background: slateblue;
+    color: white;
+    padding: 5px 10px;
+}
+
+.Disable {
+    opacity: .5;
+    cursor: auto;
+}
+
+.Text {
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.TextError {
+    font-size: 30px;
+    font-weight: bold;
+    color: lightsteelblue;
+}

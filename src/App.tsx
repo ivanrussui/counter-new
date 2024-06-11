@@ -4,6 +4,7 @@ import './App.css';
 import {Counter} from './Counter/Counter';
 import {CounterAdvanced} from './CounterAdvanced/CounterAdvanced';
 import {CounterAdvanced2in1} from './CounterAdvanced2in1/CounterAdvanced2in1';
+import {CounterRedux} from './CounterRedux/CounterRedux';
 
 const App: FC = () => {
     return (
@@ -21,10 +22,15 @@ const App: FC = () => {
                      className={({ isActive}) => isActive ? "Active" : "NavLink"}>
                 Counter Advanced 2 in 1 with Local Storage
             </NavLink>
+            <NavLink to={'/counter-redux'}
+                     className={({ isActive}) => isActive ? "Active" : "NavLink"}>
+                Counter Redux
+            </NavLink>
             <Routes>
                 <Route path={'/counter'} element={<Counter/>}/>
                 <Route path={'/counter-advanced'} element={<CounterAdvanced/>}/>
                 <Route path={'/counter-advanced-2-in-1'} element={<CounterAdvanced2in1/>}/>
+                <Route path={'/counter-redux'} element={<CounterRedux/>}/>
                 <Route path={'/*'} element={<Navigate to={'/'}/>}/>
             </Routes>
         </div>
