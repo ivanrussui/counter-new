@@ -3,22 +3,25 @@ import styles from '../../CounterRedux.module.css';
 import {useSelector} from 'react-redux';
 import {AppRootStateType} from '../../state/store';
 import {CounterType} from '../../state/counter-reducer';
-import {incorrectValue} from '../../Settings';
+import {incorrectValue} from '../../consts';
 
 type MonitorType = {
     countStart: number
     disable: boolean
 }
+
 export const Monitor: FC<MonitorType> = ({countStart, disable}) => {
     const counter = useSelector<AppRootStateType, CounterType>
     (state => state.counter);
 
+    const {text} = counter;
+
     const countClass = `${styles.Monitor} ${disable ? styles.MonitorError : ''}`;
-    const textClass = counter.text === incorrectValue ? styles.TextError : styles.Text;
+    const textClass = text === incorrectValue ? styles.TextError : styles.Text;
 
     return <>
-        {counter.text
-            ? <div className={textClass}>{counter.text}</div>
+        {text
+            ? <div className={textClass}>{text}</div>
             : <div className={countClass}>{countStart}</div>
         }
     </>;

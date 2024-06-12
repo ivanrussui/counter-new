@@ -1,11 +1,11 @@
 export type SettingsType = {
     valueStart: number
     valueMax: number
-    disableSettings: boolean
+    isDisableSettings: boolean
 }
 
 const initialState: SettingsType = {
-    disableSettings: true,
+    isDisableSettings: true,
     valueStart: 0,
     valueMax: 5
 };
@@ -13,7 +13,7 @@ const initialState: SettingsType = {
 export const settingsReducer = (state: SettingsType = initialState, action: SettingsReducerType): SettingsType => {
     switch (action.type) {
         case 'SETTINGS/CHANGE-DISABLE-STATUS':
-            return {...state, disableSettings: action.status};
+            return {...state, isDisableSettings: action.status};
         case 'SETTINGS/CHANGE-START-VALUE':
             return {...state, valueStart: action.value};
         case 'SETTINGS/CHANGE-MAX-VALUE':

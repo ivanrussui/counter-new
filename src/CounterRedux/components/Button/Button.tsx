@@ -10,5 +10,5 @@ type ButtonType = {
 export const Button: FC<ButtonType> = ({name, callBack, disable}) => {
     const buttonClass = `${styles.Button} ${disable ? styles.Disable : ''}`;
 
-    return <button  className={buttonClass} onClick={callBack}>{name}</button>;
+    return <button disabled={disable} className={buttonClass} onClick={callBack}>{name}</button>;
 };

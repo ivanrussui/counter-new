@@ -14,22 +14,26 @@ export const Counter = () => {
     const settings = useSelector<AppRootStateType, SettingsType>
     (state => state.settings);
 
+    const {countStart, countMax, text} = count;
+    const {valueStart} = settings;
+
+
     const incrementCount = () => {
         if (!disableIncrement) {
-            dispatch(incrementCountAC(count.countStart));
+            dispatch(incrementCountAC(countStart));
         }
     };
     const resetCount = () => {
-        dispatch(resetCountAC(settings.valueStart));
+        dispatch(resetCountAC(valueStart));
     };
 
-    const disableIncrement = count.countStart === count.countMax || count.text !== null;
-    const disableReset = count.countStart === settings.valueStart || count.text !== null;
+    const disableIncrement = countStart === countMax || text !== null;
+    const disableReset = countStart === valueStart || text !== null;
 
     return (
         <div className={styles.Counter}>
             <div className={styles.MonitorWrap}>
-                <Monitor countStart={count.countStart} disable={disableIncrement}/>
+                <Monitor countStart={countStart} disable={disableIncrement}/>
             </div>
             <div className={styles.ButtonsWrap}>
                 <div className={styles.Buttons}>
