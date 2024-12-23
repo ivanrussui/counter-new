@@ -1,15 +1,13 @@
-import {AppRootStateType, AppThunkType} from './store';
+import {AppThunkType} from './store';
 
 export type CounterType = {
     countStart: number
     countMax: number
-    text: string | null
 }
 
 const initialState: CounterType = {
     countStart: 0,
-    countMax: 5,
-    text: null
+    countMax: 5
 };
 
 export const counterReducer = (state: CounterType = initialState, action: CounterReducerType): CounterType => {
@@ -22,31 +20,22 @@ export const counterReducer = (state: CounterType = initialState, action: Counte
             return {...state, countStart: action.count + 1};
         case 'COUNTER/RESET-COUNT':
             return {...state, countStart: action.count};
-        case 'COUNTER/SET-TEXT':
-            return {...state, text: action.text};
         default:
             return state;
     }
 };
 
-export type CounterReducerType =
-    | SetStartCountACType
-    | SetMaxCountACType
-    | ResetCountACType
-    | IncrementCountACType
-    | SetTextACType
+export type CounterReducerType = SetStartCountACType | SetMaxCountACType | IncrementCountACType | ResetCountACType
 
-type SetStartCountACType = ReturnType<typeof setStartCountAC>
-type SetMaxCountACType = ReturnType<typeof setMaxCountAC>
 type IncrementCountACType = ReturnType<typeof incrementCountAC>
 type ResetCountACType = ReturnType<typeof resetCountAC>
-type SetTextACType = ReturnType<typeof setTextAC>
+type SetStartCountACType = ReturnType<typeof setStartCountAC>
+type SetMaxCountACType = ReturnType<typeof setMaxCountAC>
 
 export const setStartCountAC = (count: number) => ({type: 'COUNTER/SET-START-COUNT', count} as const);
 export const setMaxCountAC = (count: number) => ({type: 'COUNTER/SET-MAX-COUNT', count} as const);
 export const incrementCountAC = (count: number) => ({type: 'COUNTER/INCREMENT-COUNT', count} as const);
 export const resetCountAC = (count: number) => ({type: 'COUNTER/RESET-COUNT', count} as const);
-export const setTextAC = (text: string | null) => ({type: 'COUNTER/SET-TEXT', text} as const);
 
 // thunk
 export const setStartCountTC = (): AppThunkType => dispatch => {
@@ -62,22 +51,22 @@ export const setMaxCountTC = (): AppThunkType => dispatch => {
     }
 };
 // реализация через getState
-export const changeStartCountTC = (): AppThunkType => (dispatch, getState: () => AppRootStateType) => {
-    const value = getState().settings.valueStart
-    localStorage.setItem('valueStart', JSON.stringify(value));
-    dispatch(setStartCountAC(value));
-};
-export const changeMaxCountTC = (): AppThunkType => (dispatch, getState: () => AppRootStateType) => {
-    const value = getState().settings.valueMax
-    localStorage.setItem('valueMax', JSON.stringify(value));
-    dispatch(setMaxCountAC(value));
-};
-// реализация через параметры
-// export const changeStartCountTC = (value: number): AppThunkType => dispatch => {
+// export const changeStartCountTC = (): AppThunkType => (dispatch, getState: () => AppRootStateType) => {
+//     const value = getState().settings.valueStart
 //     localStorage.setItem('valueStart', JSON.stringify(value));
 //     dispatch(setStartCountAC(value));
 // };
-// export const changeMaxCountTC = (value: number): AppThunkType => dispatch => {
+// export const changeMaxCountTC = (): AppThunkType => (dispatch, getState: () => AppRootStateType) => {
+//     const value = getState().settings.valueMax
 //     localStorage.setItem('valueMax', JSON.stringify(value));
 //     dispatch(setMaxCountAC(value));
 // };
+// реализация через параметры
+export const changeStartCountTC = (value: number): AppThunkType => dispatch => {
+    localStorage.setItem('valueStart', JSON.stringify(value));
+    dispatch(setStartCountAC(value));
+};
+export const changeMaxCountTC = (value: number): AppThunkType => dispatch => {
+    localStorage.setItem('valueMax', JSON.stringify(value));
+    dispatch(setMaxCountAC(value));
+};

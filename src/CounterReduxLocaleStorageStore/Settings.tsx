@@ -3,13 +3,11 @@ import styles from './CounterReduxLocaleStorageSrore.module.css';
 import {Button} from './components/Button/Button';
 import {Setting} from './components/Setting/Setting';
 import {changeDisableSettingsAC, changeMaxValueAC, changeStartValueAC, SettingsType} from './state/settings-reducer';
-import {setTextAC} from './state/counter-reducer';
+import {setMaxCountAC, setStartCountAC, setTextAC} from './state/counter-reducer';
 import {enterValues, incorrectValue} from './consts/consts';
-import {setMaxCountAC, setStartCountAC} from '../CounterRedux/state/counter-reducer';
 import {saveState} from './utils/localeStorage-utils';
-import {storeLocaleStorage} from './state/store';
+import {AppRootStateType, storeLocaleStorage} from './state/store';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../CounterRedux/state/store';
 
 export const Settings: FC = () => {
     const dispatch = useDispatch();

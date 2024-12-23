@@ -10,9 +10,17 @@ import {Provider} from 'react-redux';
 import {store} from './CounterRedux/state/store';
 import {store2in1} from './CounterRedux2in1/state/store';
 import {CounterReduxLocaleStorageThunk} from './CounterReduxLocaleStorageThunk/CounterReduxLocaleStorageThunk';
+import {
+    CounterRedux2in1LocaleStorageThunk
+} from './CounterRedux2in1LocaleStorageThunk/CounterRedux2in1LocaleStorageThunk';
 import {storeThunk} from './CounterReduxLocaleStorageThunk/state/store';
+import {store2in1Thunk} from './CounterRedux2in1LocaleStorageThunk/state/store';
 import {CounterReduxLocaleStorageStore} from './CounterReduxLocaleStorageStore/CounterReduxLocaleStorageStore';
+import {
+    CounterRedux2in1LocaleStorageStore
+} from './CounterRedux2in1LocaleStorageStore/CounterRedux2in1LocaleStorageStore';
 import {storeLocaleStorage} from './CounterReduxLocaleStorageStore/state/store';
+import {store2in1LocaleStorage} from './CounterRedux2in1LocaleStorageStore/state/store';
 
 const App: FC = () => {
     return (
@@ -42,14 +50,18 @@ const App: FC = () => {
                      className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
                 Counter Redux with Local Storage Thunk
             </NavLink>
+            <NavLink to={'/counter-redux-2-in-1-locale-storage-thunk'}
+                     className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
+                Counter Redux 2 in 1 with Local Storage Thunk
+            </NavLink>
             <NavLink to={'/counter-redux-locale-storage-store'}
                      className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
                 Counter Redux with Local Storage Store
             </NavLink>
-            {/*<NavLink to={'/counter-redux-2-in-1-locale-storage'}*/}
-            {/*         className={({isActive}) => isActive ? 'Active' : 'NavLink'}>*/}
-            {/*    Counter Redux 2 in 1 with Local Storage*/}
-            {/*</NavLink>*/}
+            <NavLink to={'/counter-redux-2-in-1-locale-storage-store'}
+                     className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
+                Counter Redux 2 in 1 with Local Storage Store
+            </NavLink>
             <Routes>
                 <Route path={'/counter'} element={<Counter/>}/>
                 <Route path={'/counter-advanced'} element={<CounterAdvanced/>}/>
@@ -69,16 +81,21 @@ const App: FC = () => {
                         <CounterReduxLocaleStorageThunk/>
                     </Provider>
                 }/>
+                <Route path={'/counter-redux-2-in-1-locale-storage-thunk'} element={
+                    <Provider store={store2in1Thunk}>
+                        <CounterRedux2in1LocaleStorageThunk/>
+                    </Provider>
+                }/>
                 <Route path={'/counter-redux-locale-storage-store'} element={
                     <Provider store={storeLocaleStorage}>
                         <CounterReduxLocaleStorageStore/>
                     </Provider>
                 }/>
-                {/*<Route path={'/counter-redux-2-in-1-locale-storage'} element={*/}
-                {/*    <Provider store={storeThunk2in1}>*/}
-                {/*        /!*<CounterRedux2in1LocaleStorage/>*!/*/}
-                {/*    </Provider>*/}
-                {/*}/>*/}
+                <Route path={'/counter-redux-2-in-1-locale-storage-store'} element={
+                    <Provider store={store2in1LocaleStorage}>
+                        <CounterRedux2in1LocaleStorageStore/>
+                    </Provider>
+                }/>
                 <Route path={'/*'} element={<Navigate to={'/'}/>}/>
             </Routes>
         </div>
