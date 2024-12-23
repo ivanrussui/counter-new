@@ -13,7 +13,6 @@ import {
 import {changeMaxCountTC, changeStartCountTC, setTextAC} from './state/counter-reducer';
 import {enterValues, incorrectValue} from './consts/consts';
 import {useAppDispatch, useAppSelector} from './hooks/hooks';
-import {setMaxCountAC, setStartCountAC} from '../CounterRedux/state/counter-reducer';
 
 export const Settings: FC = () => {
     const dispatch = useAppDispatch();
@@ -32,9 +31,11 @@ export const Settings: FC = () => {
         // реализация через getState
         dispatch(changeStartCountTC());
         dispatch(changeMaxCountTC());
+
         // реализация через параметры
         // dispatch(changeStartCountTC(valueStart));
         // dispatch(changeMaxCountTC(valueMax));
+
         dispatch(changeDisableSettingsAC(true));
         dispatch(setTextAC(null));
     };

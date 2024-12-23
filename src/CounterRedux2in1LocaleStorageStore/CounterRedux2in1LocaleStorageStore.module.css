@@ -1,0 +1,110 @@
+.Counter {
+    min-width: 270px;
+    display: grid;
+    grid-template-rows: 100px 70px;
+    grid-gap: 15px;
+    place-items: center;
+    background: slateblue;
+    border: 3px solid red;
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+}
+
+.Settings {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 50px 50px;
+    align-items: center;
+}
+
+.MonitorWrap {
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.Setting {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+.Title {
+    margin: 0;
+}
+
+.Input {
+    max-width: 100px;
+    text-align: center;
+    outline-color: slateblue;
+    border: 1px solid red;
+    border-radius: 3px;
+}
+
+.InputError {
+    background-color: darkslateblue;
+    outline-color: skyblue;
+    color: aliceblue;
+}
+
+.Monitor {
+    color: white;
+    font-size: 30px;
+}
+
+.MonitorError {
+    color: lightblue;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.ButtonsWrap {
+    display: grid;
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+}
+
+
+.Buttons {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    gap: 1rem;
+}
+
+.ButtonOne {
+    gap: 0;
+}
+
+.Button {
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    background: slateblue;
+    color: white;
+    padding: 5px 10px;
+}
+
+.Disable {
+    opacity: .5;
+    cursor: auto;
+}
+
+.Text {
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.TextError {
+    font-size: 30px;
+    font-weight: bold;
+    color: lightsteelblue;
+}
