@@ -9,6 +9,10 @@ import {CounterRedux2in1} from './CounterRedux2in1/CounterRedux2in1';
 import {Provider} from 'react-redux';
 import {store} from './CounterRedux/state/store';
 import {store2in1} from './CounterRedux2in1/state/store';
+import {CounterReduxLocaleStorageThunk} from './CounterReduxLocaleStorageThunk/CounterReduxLocaleStorageThunk';
+import {storeThunk} from './CounterReduxLocaleStorageThunk/state/store';
+import {CounterReduxLocaleStorageStore} from './CounterReduxLocaleStorageStore/CounterReduxLocaleStorageStore';
+import {storeLocaleStorage} from './CounterReduxLocaleStorageStore/state/store';
 
 const App: FC = () => {
     return (
@@ -34,6 +38,18 @@ const App: FC = () => {
                      className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
                 Counter Redux 2 in 1
             </NavLink>
+            <NavLink to={'/counter-redux-locale-storage-thunk'}
+                     className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
+                Counter Redux with Local Storage Thunk
+            </NavLink>
+            <NavLink to={'/counter-redux-locale-storage-store'}
+                     className={({isActive}) => isActive ? 'Active' : 'NavLink'}>
+                Counter Redux with Local Storage Store
+            </NavLink>
+            {/*<NavLink to={'/counter-redux-2-in-1-locale-storage'}*/}
+            {/*         className={({isActive}) => isActive ? 'Active' : 'NavLink'}>*/}
+            {/*    Counter Redux 2 in 1 with Local Storage*/}
+            {/*</NavLink>*/}
             <Routes>
                 <Route path={'/counter'} element={<Counter/>}/>
                 <Route path={'/counter-advanced'} element={<CounterAdvanced/>}/>
@@ -48,6 +64,21 @@ const App: FC = () => {
                         <CounterRedux2in1/>
                     </Provider>
                 }/>
+                <Route path={'/counter-redux-locale-storage-thunk'} element={
+                    <Provider store={storeThunk}>
+                        <CounterReduxLocaleStorageThunk/>
+                    </Provider>
+                }/>
+                <Route path={'/counter-redux-locale-storage-store'} element={
+                    <Provider store={storeLocaleStorage}>
+                        <CounterReduxLocaleStorageStore/>
+                    </Provider>
+                }/>
+                {/*<Route path={'/counter-redux-2-in-1-locale-storage'} element={*/}
+                {/*    <Provider store={storeThunk2in1}>*/}
+                {/*        /!*<CounterRedux2in1LocaleStorage/>*!/*/}
+                {/*    </Provider>*/}
+                {/*}/>*/}
                 <Route path={'/*'} element={<Navigate to={'/'}/>}/>
             </Routes>
         </div>
